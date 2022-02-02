@@ -1,0 +1,152 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	background-color: #0077b6;
+}
+
+#wrapper {
+	display:flex;
+	flex-direction:column;	
+	height: 100vh;
+}
+
+
+
+#top-banner{
+	padding:10px;
+	background-color: rgba(0,0,0,.5);
+	text-align: center;	
+}
+#top-banner h1{
+}
+#top-banner h1 a{
+}
+#header {
+	background-color: rgba(255,255,255,.8);
+	padding: 8px;
+	font-weight: bold;
+}
+
+#page-container {
+	padding:10px;
+	text-align: center;
+	flex-grow:8;
+	overflow-y: auto;
+}
+
+#footer {
+	flex-basis:5%;
+	text-align: center;
+	line-height: 40px;
+	padding: 0px;
+	background-color: rgba(0,0,0,.4);
+	color:rgba(255,255,255,.8);
+	
+}
+
+#footer a {
+	color: white;
+	text-decoration: underline;
+}
+
+.fa{
+	padding-right:4px ;
+}
+
+
+.product-banner {
+	width: 500px;
+	margin: 20px auto;
+	padding: 30px;
+	opacity: 0.7;
+	background-color: rgba(0,0,0,.3);
+	color: white;
+	border-radius: 5px;
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+}
+
+.product-banner .product-name {
+	font-size: 2.5em;
+}
+
+.product-banner .product-summary {
+	margin-top: 50px;
+	font-size: 1.4em;
+}
+
+.product-banner .product-version {
+	margin-top: 50px;
+	font-size: 0.8em;
+	font-weight: bolder;
+}
+
+
+.login-page {
+}
+
+.login-page .title {
+	background-color: #a2b9bc;
+	text-align: center;
+	color: white;
+	font-size: 1.6em;
+}
+
+.login-page .login-panel {
+	margin: 50px auto;
+	width: 450px;
+	background-color: white;
+	border-radius: 5px;
+	padding: 0px;
+	  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+
+}
+
+.login-page .login-panel .login-panel-header {
+	font-weight: bold;
+	background-color: #585858;
+	color:white;
+	text-align: center;
+	padding: 10px;
+	margin:0;
+	font-size:1.1em;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	  
+	
+}
+
+.login-page .login-panel .fields {
+}
+
+.login-page .login-panel .fields .fieldset {
+	margin-top: 5px;
+}
+
+.login-page .login-panel .fields .fieldset label {
+	margin-left: 5px;
+}
+
+.login-page .login-panel .fields .fieldset input {
+	
+}
+
+.login-page .login-panel  .panel-footer {
+	margin-top:20px;
+	border-top: 1px solid lightgray;
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+}
+
+.login-page .login-panel  .panel-footer button {
+	
+}
+
+.ui-datatable{
+	width:fit-content!important;
+	margin:auto;
+}
+
+.ui-datatable table{
+	margin:auto;
+	width:auto!important;
+}

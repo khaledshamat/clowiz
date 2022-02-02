@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Check full configurations documentation at: http://logback.qos.ch/manual/configuration.html -->
+<configuration debug="false" scan="true"
+	scanPeriod="60 seconds" packagingData="true">
+	<!-- <shutdownHook/> -->
+	<statusListener
+		class="ch.qos.logback.core.status.NopStatusListener" />
+	<contextName>Smart-Cloud</contextName>
+	<appender name="CONSOLE"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%t] %-5level %logger{0} - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${user.home}/.jk/logs/8b204943-058d-45f2-a1a1-be240b6357ff/jk.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${user.home}/.jk/logs/8b204943-058d-45f2-a1a1-be240b6357ff/jk-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- each file should be at most 100MB, keep 30 days worth of history, 
+				but at most 10GB -->
+			<maxFileSize>10MB</maxFileSize>
+			<maxHistory>10</maxHistory>
+			<totalSizeCap>1GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d [%thread] %level %mdc %logger{100} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Levels are: TRACE, DEBUG, INFO, WARN, info, ALL or OFF -->
+	<logger name="com.jk" level="info" />
+	
+	<logger name="org.springframework" level="error" />
+	<logger name="org.springframework.security.web" level="error" />
+	<logger name="com.jk.core.factory.spring" level="error" />
+
+	<logger name="org.hibernate" level="error" />
+	<logger name="com.jk.data.datasource" level="debug" />
+
+	<logger name="com.mchange" level="warn" />
+	<logger name="com.mchange.v2.c3p0.impl" level="warn" />
+
+
+	<logger name="log.org.jboss.logging" level="error" />
+
+	<logger name="javax.enterprise" level="error" />
+
+	<logger name="javax.faces" level="error" />
+	<logger name="com.sun.faces" level="error" />
+	<logger name="org.primefaces" level="error" />
+	<logger name="org.omnifaces" level="error" />
+
+
+	<logger name="org.apache.catalina" level="error" />
+	<logger name="org.apache.jasper" level="error" />
+	<logger name="org.apache.tomcat" level="error" />
+	<logger name="org.apache.coyote" level="error" />
+
+	<root level="info">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>

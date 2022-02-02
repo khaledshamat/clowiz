@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:jk="http://jalalkiswani.com/jsf"
+	xmlns:p="http://primefaces.org/ui" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:of="http://omnifaces.org/ui">
+<ui:composition template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="page-title">
+		Page1
+	</ui:define>
+
+	<ui:define name="contents">	
+	<h:form id="frmPage1" enctype="multipart/form-data">
+	<p:autoUpdate />
+	<p:growl />
+	<p:panelGrid columns="2" style="margin:auto;" styleClass="shaddow">
+		<f:facet name="header">Page1 Form</f:facet>
+
+	<p:outputLabel value="Field 1" for="field1"/>	
+	<p:calendar id="field1" pattern="dd/MM/yyyy" value="#{mbPage1.model.field1}" readOnly="true" required="false" disabled="#{mbCode1.allowEdit}"/>
+		<f:facet name="footer">			
+		<div align="center">				
+		<p:commandButton value="Add" action="#{mbPage1.add}" rendered="#{mbPage1.allowAdd}"  process="@form" />
+		<p:commandButton value="Edit" action="#{mbPage1.edit}"  rendered="#{mbPage1.allowEdit}"  process="@this"/>
+		<ui:remove>
+		<p:commandButton value="Duplicate" action="#{mbGenerator.duplicate()}"  rendered="#{mbGenerator.allowEdit}"  process="@this"/>
+		</ui:remove>
+		<p:commandButton value="Save" action="#{mbPage1.save}" rendered="#{mbPage1.allowSave}"  process="@form" />
+		<p:commandButton value="Delete" action="#{mbPage1.delete}" rendered="#{mbPage1.allowDelete}"  process="@this"/>
+		<p:commandButton value="Reset" action="#{mbPage1.reset}" rendered="#{mbPage1.allowReset}"  process="@this"/>
+		<p:commandButton value="Fill" action="#{mbPage1.fill}" rendered="#{mbPage1.allowFill}"  process="@this"/>
+		<p:commandButton value="Cancel Edit" action="#{mbPage1.cancelEdit()}" rendered="#{mbPage1.editMode}"  process="@this"/>
+		</div>			
+		</f:facet>
+	
+	</p:panelGrid>		
+	</h:form>
+<hr/>
+	<h:form>
+		<p:dataTable 
+		value="#{mbPage1.modelList}" 
+		var="model" rowKey="#{model.id}"
+		paginator="true" 
+		paginatorAlwaysVisible="false" 
+		paginatorPosition="bottom" 
+		selectionMode="single" 
+		filteredValue="#{mbPage1.filterList}"
+		selection="#{mbPage1.model}"  
+		emptyMessage="" 
+		rowIndexVar="row"
+		styleClass="shaddow">
+		<p:ajax event="rowSelect"/>
+		<p:autoUpdate />
+		<f:facet name="header">Page1 Data Table</f:facet>
+		<p:column headerText="#">#{row+1}</p:column>
+			    <p:column 
+    			  	headerText="Field 1" 
+    			  	sortBy="#{model.field1}" 
+    			  	filterBy="#{model.field1}" 
+    			  	filterMatchMode="contains">
+                    <h:outputText value="#{model.field1==null?'-':model.field1}" >
+        			</h:outputText>
+    			</p:column>	
+	</p:dataTable>
+	</h:form>	</ui:define>
+</ui:composition>
+</html>
